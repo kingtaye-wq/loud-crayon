@@ -22,6 +22,11 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <head>
         <meta name="robots" content="noindex, nofollow" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#ea580c" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <link rel="apple-touch-icon" href="/icons/icon192.png" />
       </head>
       <body className="bg-[#0B0F19] text-slate-100 min-h-screen flex flex-col antialiased selection:bg-orange-500 selection:text-white">
         {/* Staging Top Banner */}

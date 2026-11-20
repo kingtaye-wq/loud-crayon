@@ -81,7 +81,7 @@ async function runTests() {
     const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
     assert('Extension: Manifest V3 declared', manifest.manifest_version === 3);
     assert('Extension: Permissions include activeTab & scripting', manifest.permissions.includes('activeTab') && manifest.permissions.includes('scripting'));
-    assert('Extension: Host permissions include <all_urls>', manifest.host_permissions.includes('<all_urls>'));
+    assert('Extension: Host permissions restricted to allowlist (no <all_urls>)', !manifest.host_permissions.includes('<all_urls>') && manifest.host_permissions.some(p => p.includes('loudcrayon.com')));
     assert('Extension: Popup and background service worker configured', manifest.action?.default_popup === 'popup.html' && manifest.background?.service_worker === 'background.js');
   } catch (e) {
     assert('Extension manifest check', false, e.message);
